@@ -3,29 +3,33 @@ import {ExperienceBar} from "../components/ExperienceBar";
 import {Profile} from "../components/Profile";
 import {CompletedChallenges} from "../components/CompletedChallenges";
 import {Countdown} from "../components/Countdown";
+import {CountdownProvider} from '../contexts/CountdownContext';
 
 import Head from "next/head";
 import {ChallengeBox} from "../components/ChallengeBox";
+import {ChallengesProvider} from "../contexts/ChallengesContext";
 
 export default function Home() {
-  return (
-      <div className={styles.container}>
-          <Head>
-              <title>Inicio | move.it</title>
-          </Head>
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>Inicio | move.it</title>
+            </Head>
 
-         <ExperienceBar />
+            <ExperienceBar/>
+            <CountdownProvider>
 
-         <section>
-             <div>
-                 <Profile />
-                 <CompletedChallenges />
-                 <Countdown />
-             </div>
-             <div>
-                 <ChallengeBox />
-             </div>
-         </section>
-      </div>
-  )
+                <section>
+                    <div>
+                        <Profile/>
+                        <CompletedChallenges/>
+                        <Countdown/>
+                    </div>
+                    <div>
+                        <ChallengeBox/>
+                    </div>
+                </section>
+            </CountdownProvider>
+        </div>
+    )
 }
